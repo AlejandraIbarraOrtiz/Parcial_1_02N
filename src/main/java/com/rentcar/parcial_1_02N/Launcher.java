@@ -1,4 +1,4 @@
-package com.biblioteca.parcial_1;
+package com.rentcar.parcial_1_02N;
 
 import javafx.application.Application;
 
