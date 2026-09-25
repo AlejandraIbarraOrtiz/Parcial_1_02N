@@ -1,0 +1,100 @@
+package com.rentcar.parcial_1_02N.controlador;
+
+import com.rentcar.parcial_1_02N.modelo.Cliente;
+import com.rentcar.parcial_1_02N.modelo.RentCarSingleton;
+import com.rentcar.parcial_1_02N.servicio.AdministradorClientes;
+import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.TextField;
+
+import javax.swing.text.BadLocationException;
+import java.time.LocalDate;
+
+public class ControladorCliente {
+
+    //Campos de texto de la vista Agregar Cliente
+    @FXML private TextField txtNombre;
+    @FXML private TextField txtId;
+    @FXML private TextField txtTelefono;
+    @FXML private TextField txtCorreo;
+    @FXML private TextField txtEdad;
+
+    //Amdin operaciones relacionadas con clientes
+    private AdministradorClientes administradorClientes = RentCarSingleton.getInstancia().getAdminClientes();
+
+    //Toma los datos de la vista y agrega un nuevo cliente
+    @FXML
+    private void onAgregarCliente(){
+
+        //Verifica que ningún campo esté vacío
+        if (txtNombre.getText().trim().isEmpty() || txtId.getText().trim().isEmpty() ||
+                txtTelefono.getText().trim().isEmpty() || txtCorreo.getText().trim().isEmpty() ||
+                txtEdad.getText().trim().isEmpty()){
+
+            Alert alerta = new Alert(Alert.AlertType.ERROR);
+            alerta.setTitle("Error");
+            alerta.setHeaderText(null);
+            alerta.setContentText("Todos los campos son obligatorios");
+            alerta.show();
+
+            return;
+        }
+
+        try {
+
+            //Convertir edad a int
+            int edad = Integer.parseInt(txtEdad.getText());
+
+            //Verifica que la edad sea mayor a cero
+            if (edad < 18){
+
+                Alert alerta = new Alert(Alert.AlertType.ERROR);
+                alerta.setTitle("Error");
+                alerta.setHeaderText(null);
+                alerta.setContentText("Debe ser mayor de edad.");
+
+            }
+
+            //Crear cliente con los datos ingresados en la vista
+            Cliente cliente = new Cliente(txtNombre.getText(), txtId.getText(), txtTelefono.getText(),
+                    txtCorreo.getText(), edad, LocalDate.now());
+
+            //Intenta agregar el cliente mediante AdministradorClientes
+            if (administradorClientes.agregarCliente(cliente)){
+
+                Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+                alerta.setTitle("Operación exitosa");
+                alerta.setHeaderText(null);
+                alerta.setContentText("Cliente agregado exitosamente");
+                alerta.showAndWait();
+
+                limpiarCampos();
+            }else {
+
+                Alert alerta = new Alert(Alert.AlertType.ERROR);
+                alerta.setTitle("Error");
+                alerta.setHeaderText(null);
+                alerta.setContentText("Datos inválidos o ID ya registrado");
+                alerta.showAndWait();
+            }
+        }catch (NumberFormatException excepcion){
+
+            //Se ejecuta cuando la edad contiene letras o no es un número entero
+            Alert alerta =  new Alert(Alert.AlertType.ERROR);
+            alerta.setTitle("Error");
+            alerta.setHeaderText(null);
+            alerta.setContentText("La edad debe contener solamente números");
+            alerta.showAndWait();
+        }
+    }
+
+    //Método para limpiar los campos del formulario luego de agregar un cliente
+    private void limpiarCampos() {
+
+        txtNombre.clear();
+        txtId.clear();
+        txtTelefono.clear();
+        txtCorreo.clear();
+        txtEdad.clear();
+    }
+}
