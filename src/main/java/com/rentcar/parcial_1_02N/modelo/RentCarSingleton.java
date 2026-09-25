@@ -48,13 +48,9 @@ public class RentCarSingleton {
         return administradorClientes;
     }
 
-    //Métodos Get Y Set
+    //Métodos Get
     public String getNombre() {
         return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
     }
 
     public String getNit() {
@@ -65,31 +61,15 @@ public class RentCarSingleton {
         return direccion;
     }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-
     public String getTelefono() {
         return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
     }
 
     public String getCorreo() {
         return correo;
     }
 
-    public void setCorreo(String correo) {
-        this.correo = correo;
-    }
-
     public String getPaginaWeb() {
         return paginaWeb;
-    }
-
-    public void setPaginaWeb(String paginaWeb) {
-        this.paginaWeb = paginaWeb;
     }
 }
