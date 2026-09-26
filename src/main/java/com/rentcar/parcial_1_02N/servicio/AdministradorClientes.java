@@ -89,6 +89,20 @@ public class AdministradorClientes {
         return null;
     }
 
+    //Buscar cliente mediante número de teléfono
+    public Cliente buscarClienteTelefono(String telefono){
+
+        for (int i = 0; i < listaClientes.size(); i++){
+
+            if (listaClientes.get(i).getTelefono().equals(telefono)){
+
+                return listaClientes.get(i);
+            }
+        }
+
+        return null;
+    }
+
     //Retorna la lista completa de clientes
     public List<Cliente> getListaClientes() {
 

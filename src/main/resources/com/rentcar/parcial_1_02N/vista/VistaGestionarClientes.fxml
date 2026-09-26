@@ -16,6 +16,9 @@
 
     <Button text="Eliminar Cliente" onAction="#abrirEliminarCliente"/>
 
+    <Button text="Buscar Cliente" onAction="#abrirBuscarCliente"/>
+
     <Button text="Volver" onAction="#volverMenuPrincipal"/>
+
 
 </VBox>

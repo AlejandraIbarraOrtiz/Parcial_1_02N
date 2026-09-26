@@ -85,7 +85,23 @@ public class ControladorGestionarClientes {
 
         //Cambia el título de la ventana
         ventana.setTitle("Sistema RentCar");
+    }
 
+    //Abre la vista para buscar cliente
+    @FXML
+    private void abrirBuscarCliente() throws IOException{
 
+        //Carga la vista para buscar un cliente
+        Parent root = FXMLLoader.load(getClass().getResource(
+                "/com/rentcar/parcial_1_02N/vista/VistaBuscarCliente.fxml"));
+
+        //Obtiene la vista actual
+        Stage ventana = (Stage) contenedorPrincipal.getScene().getWindow();
+
+        //Cambia el contenido de la ventana
+        ventana.setScene(new Scene(root, 600, 400));
+
+        //Cambia el título de la ventana
+        ventana.setTitle("Buscar cliente");
     }
 }

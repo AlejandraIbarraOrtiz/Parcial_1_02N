@@ -3,6 +3,7 @@ package com.rentcar.parcial_1_02N.controlador;
 import com.rentcar.parcial_1_02N.modelo.Cliente;
 import com.rentcar.parcial_1_02N.modelo.RentCarSingleton;
 import com.rentcar.parcial_1_02N.servicio.AdministradorClientes;
+import com.rentcar.parcial_1_02N.validador.ClienteValidador;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,7 +12,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.time.LocalDate;
 
@@ -27,6 +27,7 @@ public class ControladorCliente {
 
     //Amdin operaciones relacionadas con clientes
     private AdministradorClientes administradorClientes = RentCarSingleton.getInstancia().getAdministradorClientes();
+
 
     //Toma los datos de la vista y agrega un nuevo cliente
     @FXML
@@ -62,6 +63,42 @@ public class ControladorCliente {
 
                 return;
 
+            }
+
+            //Verifica que el ID contenga solamente números
+            if (!ClienteValidador.validarId(txtId.getText())){
+
+                Alert alerta = new Alert(Alert.AlertType.ERROR);
+                alerta.setTitle("Error");
+                alerta.setHeaderText(null);
+                alerta.setContentText("El ID solo puede contener números");
+                alerta.showAndWait();
+
+                return;
+            }
+
+            //Verifica que el teléfono tenga exactamente 10 digitos
+            if (!ClienteValidador.validarTelefono(txtTelefono.getText())){
+
+                Alert alerta = new Alert(Alert.AlertType.ERROR);
+                alerta.setTitle("Error");
+                alerta.setHeaderText(null);
+                alerta.setContentText("El teléfono debe contener exactamente 10 dígitos y solo puede contener números");
+                alerta.showAndWait();
+
+                return;
+            }
+
+            //Verifica que el correo tenga un formato válido
+            if (!ClienteValidador.validarCorreo(txtCorreo.getText())){
+
+                Alert alerta = new Alert(Alert.AlertType.ERROR);
+                alerta.setTitle("Error");
+                alerta.setHeaderText(null);
+                alerta.setContentText("El correo electrónico no tiene un formato válido");
+                alerta.showAndWait();
+
+                return;
             }
 
             //Crear cliente con los datos ingresados en la vista
