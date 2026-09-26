@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Button?>
+
+<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:id="contenedorPrincipal"
+      fx:controller="com.rentcar.parcial_1_02N.controlador.ControladorCliente"
+      spacing="10" alignment="CENTER" prefWidth="300" prefHeight="200">
+
+    <Label text="Agregar Cliente" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+
+    <TextField fx:id="txtNombre" promptText="Nombre"/>
+    <TextField fx:id="txtId" promptText="ID"/>
+    <TextField fx:id="txtTelefono" promptText="Teléfono"/>
+    <TextField fx:id="txtCorreo" promptText="Correo"/>
+    <TextField fx:id="txtEdad" promptText="Edad"/>
+
+    <HBox spacing="10">
+
+        <Button text="Guardar" onAction="#onAgregarCliente"/>
+        <Button text="Volver" onAction="#volverGestionClientes"/>
+
+    </HBox>
+
+</VBox>

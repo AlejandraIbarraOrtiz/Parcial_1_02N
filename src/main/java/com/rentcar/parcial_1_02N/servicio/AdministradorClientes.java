@@ -1,31 +1,50 @@
 package com.rentcar.parcial_1_02N.servicio;
 
 import com.rentcar.parcial_1_02N.modelo.Cliente;
-
+import com.rentcar.parcial_1_02N.validador.ClienteValidador;
 import java.util.ArrayList;
 import java.util.List;
 
 public class AdministradorClientes {
 
-    private List<Cliente> clientes;
+    //Lista para almacenar clientes
+    private List<Cliente> listaClientes;
 
+
+    //Inicializa la lista de clientes
     public AdministradorClientes(){
 
-        clientes = new ArrayList<>();
+        listaClientes = new ArrayList<>();
     }
 
-    public void agregarCliente(Cliente cliente){
+    //Agregar el cliente si los datos son válidos y el ID no está registrado
+    public boolean agregarCliente(Cliente cliente){
 
-        clientes.add(cliente);
+
+        //Verifica que los datos del cliente sean válidos
+        if (!ClienteValidador.validarCliente(cliente)){
+
+            return false;
+        }
+
+        //Verifica que no exista otro cliente con el mismo ID
+        if (buscarClienteId(cliente.getId()) != null){
+
+            return false;
+        }
+
+        listaClientes.add(cliente);
+        return true;
     }
 
+    //Eliminar cliente buscándolo por ID
     public boolean eliminarCliente(String id){
 
-        for (int i = 0; i < clientes.size(); i++){
+        for (int i = 0; i < listaClientes.size(); i++){
 
-            if (clientes.get(i).getId().equals(id)){
+            if (listaClientes.get(i).getId().equals(id)){
 
-                clientes.remove(i);
+                listaClientes.remove(i);
 
                 return true;
             }
@@ -34,36 +53,45 @@ public class AdministradorClientes {
         return false;
     }
 
+    /*Modifica los datos de cliente:
+    correo y telefono*/
     public boolean modificarCliente(String id, String telefono, String correo){
 
+        //Busca el cliente que se quiere modificar
         Cliente cliente = buscarClienteId(id);
 
         if (cliente != null){
 
-            cliente.setTelefono(telefono);
-            cliente.setCorreo(correo);
+            //Verifica que el teléfono y el correo sean válidos
+            if (ClienteValidador.validarTelefono(telefono) && ClienteValidador.validarCorreo(correo)){
 
-            return true;
+                cliente.setTelefono(telefono);
+                cliente.setCorreo(correo);
+
+                return true;
+            }
         }
 
         return false;
     }
 
+    //Buscar cliente por ID
     public Cliente buscarClienteId(String id){
 
-        for (int i = 0; i < clientes.size(); i++){
+        for (int i = 0; i < listaClientes.size(); i++){
 
-            if (clientes.get(i).getId().equals(id)){
+            if (listaClientes.get(i).getId().equals(id)){
 
-                return clientes.get(i);
+                return listaClientes.get(i);
             }
         }
 
         return null;
     }
 
-    public List<Cliente> getClientes(){
+    //Retorna la lista completa de clientes
+    public List<Cliente> getListaClientes() {
 
-        return clientes;
+        return listaClientes;
     }
 }

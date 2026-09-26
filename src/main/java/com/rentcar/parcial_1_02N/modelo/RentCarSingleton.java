@@ -4,8 +4,10 @@ import com.rentcar.parcial_1_02N.servicio.AdministradorClientes;
 
 public class RentCarSingleton {
 
-   private static RentCarSingleton instancia;
+    //Guardar única instancia de RentCarSingleton
+    private static RentCarSingleton instancia;
 
+    //Atributos empresa
     private String nombre;
     private String nit;
     private String direccion;
@@ -13,7 +15,8 @@ public class RentCarSingleton {
     private String correo;
     private String paginaWeb;
 
-    private AdministradorClientes adminClientes;
+    //Administra las operaciones relacionadas con el cliente
+    private AdministradorClientes administradorClientes;
 
     private RentCarSingleton(){
 
@@ -24,10 +27,12 @@ public class RentCarSingleton {
         correo = "contacto@rentcar.com";
         paginaWeb = "www.rentcar.com";
 
-        adminClientes = new AdministradorClientes();
+        //Crea el administrador de clientes
+        administradorClientes = new AdministradorClientes();
     }
 
-    public static RentCarSingleton getInstance(){
+    //Retorna la única instancia de RentCarSingleton
+    public static RentCarSingleton getInstancia(){
 
         if(instancia == null){
 
@@ -37,22 +42,15 @@ public class RentCarSingleton {
         return instancia;
     }
 
-    public AdministradorClientes getAdminClientes(){
+    //Retorna el administrador de clientes
+    public AdministradorClientes getAdministradorClientes(){
 
-        return adminClientes;
+        return administradorClientes;
     }
 
-    //Métodos Get Y Set
-    public static RentCarSingleton getInstancia() {
-        return instancia;
-    }
-
+    //Métodos Get
     public String getNombre() {
         return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
     }
 
     public String getNit() {
@@ -63,31 +61,15 @@ public class RentCarSingleton {
         return direccion;
     }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-
     public String getTelefono() {
         return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
     }
 
     public String getCorreo() {
         return correo;
     }
 
-    public void setCorreo(String correo) {
-        this.correo = correo;
-    }
-
     public String getPaginaWeb() {
         return paginaWeb;
-    }
-
-    public void setPaginaWeb(String paginaWeb) {
-        this.paginaWeb = paginaWeb;
     }
 }

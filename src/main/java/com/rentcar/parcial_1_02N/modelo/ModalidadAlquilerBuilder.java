@@ -1,6 +1,4 @@
-package modelo;
-
-import javafx.util.Builder;
+package com.rentcar.parcial_1_02N.modelo;
 
 public class ModalidadAlquilerBuilder {
 

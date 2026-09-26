@@ -1,7 +1,6 @@
-package modelo;
+package com.rentcar.parcial_1_02N.modelo;
 
 import patronesCreacionales.Modalidad;
-import patronesCreacionales.ModalidadAlquilerFactory;
 
 public class ModalidadAlquilerEconomica implements Modalidad {
     private String codigo;
