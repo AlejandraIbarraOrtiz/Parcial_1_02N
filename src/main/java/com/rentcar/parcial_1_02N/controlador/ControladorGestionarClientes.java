@@ -71,7 +71,21 @@ public class ControladorGestionarClientes {
 
     // Regresa al menú principal
     @FXML
-    private void volverMenuPrincipal() {
-        System.out.println("Volver al menú principal");
+    private void volverMenuPrincipal() throws IOException {
+
+        //Carga la vista del menú principal
+        Parent root = FXMLLoader.load(getClass().getResource(
+                "/com/rentcar/parcial_1_02N/vista/VistaMenuPrincipal.fxml"));
+
+        //Obtiene la ventana actual
+        Stage ventana = (Stage) contenedorPrincipal.getScene().getWindow();
+
+        //Cambia el contenido de la ventana
+        ventana.setScene(new Scene(root, 600, 400));
+
+        //Cambia el título de la ventana
+        ventana.setTitle("Sistema RentCar");
+
+
     }
 }
