@@ -3,6 +3,7 @@ package com.rentcar.parcial_1_02N.controlador;
 import com.rentcar.parcial_1_02N.modelo.Cliente;
 import com.rentcar.parcial_1_02N.modelo.RentCarSingleton;
 import com.rentcar.parcial_1_02N.servicio.AdministradorClientes;
+import com.rentcar.parcial_1_02N.validador.TelefonoPerfectoValidador;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -44,6 +45,23 @@ public class ControladorBuscarCliente {
         //Verifica si el cliente fue encontrado
         if (cliente != null){
 
+            //Convierte el teléfono de String a long
+            long numeroTelefono = Long.parseLong(cliente.getTelefono());
+
+            //Verifica si el teléfono corresponde a un número perfecto
+            boolean telefonoPerfecto = TelefonoPerfectoValidador.esNumeroPerfecto(numeroTelefono);
+
+            //Guarda el resultado que vamos a mostrar
+            String resultadoTelefono;
+
+            if (telefonoPerfecto){
+
+                resultadoTelefono = "Sí es un número perfecto";
+            }else {
+
+                resultadoTelefono = "No es un número perfecto";
+            }
+
             Alert alerta = new Alert(Alert.AlertType.INFORMATION);
             alerta.setTitle("Cliente encontrado");
             alerta.setHeaderText(null);
@@ -54,7 +72,8 @@ public class ControladorBuscarCliente {
                     "\nTeléfono: " + cliente.getTelefono() +
                     "\nCorreo: " + cliente.getCorreo() +
                     "\nEdad: " + cliente.getEdad() +
-                    "\nFecha de registro: " + cliente.getFechaRegistro()
+                    "\nFecha de registro: " + cliente.getFechaRegistro() +
+                    "\nTeléfono Perfecto: " + resultadoTelefono
             );
 
             alerta.showAndWait();
