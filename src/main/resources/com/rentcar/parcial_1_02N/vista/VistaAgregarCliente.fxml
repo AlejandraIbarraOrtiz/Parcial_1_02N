@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TableColumn?>
 
-<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:id="contenedorPrincipal"
       fx:controller="com.rentcar.parcial_1_02N.controlador.ControladorCliente"
       spacing="10" alignment="CENTER" prefWidth="300" prefHeight="200">
 
@@ -24,6 +21,7 @@
     <HBox spacing="10">
 
         <Button text="Guardar" onAction="#onAgregarCliente"/>
+        <Button text="Volver" onAction="#volverGestionClientes"/>
 
     </HBox>
 

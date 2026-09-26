@@ -43,7 +43,7 @@ public class RentCarSingleton {
     }
 
     //Retorna el administrador de clientes
-    public AdministradorClientes getAdminClientes(){
+    public AdministradorClientes getAdministradorClientes(){
 
         return administradorClientes;
     }

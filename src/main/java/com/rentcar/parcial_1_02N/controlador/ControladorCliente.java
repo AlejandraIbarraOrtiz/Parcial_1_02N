@@ -4,10 +4,15 @@ import com.rentcar.parcial_1_02N.modelo.Cliente;
 import com.rentcar.parcial_1_02N.modelo.RentCarSingleton;
 import com.rentcar.parcial_1_02N.servicio.AdministradorClientes;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
-import javax.swing.text.BadLocationException;
+import java.io.IOException;
 import java.time.LocalDate;
 
 public class ControladorCliente {
@@ -18,9 +23,10 @@ public class ControladorCliente {
     @FXML private TextField txtTelefono;
     @FXML private TextField txtCorreo;
     @FXML private TextField txtEdad;
+    @FXML private VBox contenedorPrincipal;
 
     //Amdin operaciones relacionadas con clientes
-    private AdministradorClientes administradorClientes = RentCarSingleton.getInstancia().getAdminClientes();
+    private AdministradorClientes administradorClientes = RentCarSingleton.getInstancia().getAdministradorClientes();
 
     //Toma los datos de la vista y agrega un nuevo cliente
     @FXML
@@ -52,6 +58,9 @@ public class ControladorCliente {
                 alerta.setTitle("Error");
                 alerta.setHeaderText(null);
                 alerta.setContentText("Debe ser mayor de edad.");
+                alerta.showAndWait();
+
+                return;
 
             }
 
@@ -88,7 +97,7 @@ public class ControladorCliente {
         }
     }
 
-    //Método para limpiar los campos del formulario luego de agregar un cliente
+    //Metodo para limpiar los campos del formulario luego de agregar un cliente
     private void limpiarCampos() {
 
         txtNombre.clear();
@@ -96,5 +105,22 @@ public class ControladorCliente {
         txtTelefono.clear();
         txtCorreo.clear();
         txtEdad.clear();
+    }
+
+    @FXML
+    private void volverGestionClientes() throws IOException{
+
+        //Carga la vista para gestionar clientes
+        Parent root = FXMLLoader.load(getClass().getResource(
+                "/com/rentcar/parcial_1_02N/vista/VistaGestionarClientes.fxml"));
+
+        //Obtiene la ventana actual
+        Stage ventana = (Stage) contenedorPrincipal.getScene().getWindow();
+
+        //Cambia el contenido de la ventana
+        ventana.setScene(new Scene(root, 600, 400));
+
+        //Cambia el título de la ventana
+        ventana.setTitle("Gestión de Clientes");
     }
 }

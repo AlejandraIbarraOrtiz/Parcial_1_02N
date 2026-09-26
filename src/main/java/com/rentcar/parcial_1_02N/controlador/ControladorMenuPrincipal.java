@@ -1,13 +1,27 @@
 package com.rentcar.parcial_1_02N.controlador;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class ControladorMenuPrincipal {
 
     @FXML
-    private void abrirGestionClientes() {
+    private void abrirGestionClientes() throws IOException {
 
-        System.out.println("Abrir gestión de clientes");
+        //Carga la vista de gestión de clientes
+        Parent root = FXMLLoader.load(getClass().getResource(
+                "/com/rentcar/parcial_1_02N/vista/VistaGestionarClientes.fxml"));
+
+        Stage ventana = new Stage();
+
+        ventana.setScene(new Scene(root, 600, 400));
+        ventana.setTitle("Gestión de Clientes");
+        ventana.show();
     }
 
     @FXML
