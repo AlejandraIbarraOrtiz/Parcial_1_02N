@@ -53,8 +53,20 @@ public class ControladorGestionarClientes {
 
     // Abre la vista para eliminar un cliente
     @FXML
-    private void abrirEliminarCliente() {
-        System.out.println("Abrir eliminar cliente");
+    private void abrirEliminarCliente() throws IOException{
+
+        //Carga la vista para eliminar Cliente
+        Parent root = FXMLLoader.load(getClass().getResource(
+                "/com/rentcar/parcial_1_02N/vista/VistaEliminarCliente.fxml"));
+
+        //Obtiene la ventana actual
+        Stage ventana = (Stage) contenedorPrincipal.getScene().getWindow();
+
+        //Cambia el contenido de la ventana
+        ventana.setScene(new Scene(root, 600, 500));
+
+        //Cambia el título de la ventana
+        ventana.setTitle("Eliminar Cliente");
     }
 
     // Regresa al menú principal

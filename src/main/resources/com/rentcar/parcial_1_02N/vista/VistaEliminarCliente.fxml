@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:id="contenedorPrincipal"
+      fx:controller="com.rentcar.parcial_1_02N.controlador.ControladorEliminarCliente"
+      spacing="10" alignment="CENTER" prefWidth="600" prefHeight="400">
+
+    <Label text="Eliminar Cliente" style="-fx-font-size: 22px; -fx-font-weight: bold;"/>
+
+    <TextField fx:id="txtId" promptText="ID del cliente"/>
+
+    <Button text="Eliminar" onAction="#eliminarCliente"/>
+
+    <Button text="Volver" onAction="#volverGestionClientes"/>
+
+</VBox>
