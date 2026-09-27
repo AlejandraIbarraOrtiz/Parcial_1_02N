@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.layout.VBox?>
-
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<VBox xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml"
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+
+<VBox xmlns="http://javafx.com"
+      xmlns:fx="http://javafx.com"
       fx:controller="com.rentcar.parcial_1_02N.controlador.ControladorMenuPrincipal"
       spacing="15" alignment="CENTER">
 
@@ -14,7 +16,18 @@
 
     <Button text="Gestión de Clientes" onAction="#abrirGestionClientes"/>
     <Button text="Gestión de Vehículos" onAction="#abrirGestionVehiculos"/>
-    <Button text="Gestión de alquileres" onAction="#abrirGestionAlquileres"/>
+
+    <!-- AQUÍ SE AGRUPAN: Cambiamos el botón simple por un menú desplegable -->
+    <MenuButton text="Gestión de Alquileres">
+        <items>
+            <!-- Opción principal del flujo -->
+            <MenuItem text="Procesar Alquileres" onAction="#abrirGestionAlquileres"/>
+
+            <!-- Tu nueva funcionalidad del Factory + Builder metida aquí adentro -->
+            <MenuItem text="Configuración de Modalidades" onAction="#abrirGestionModalidades"/>
+        </items>
+    </MenuButton>
+
     <Button text="Reservas" onAction="#abrirReservas"/>
     <Button text="Servicios Adicionales" onAction="#abrirServicios"/>
 

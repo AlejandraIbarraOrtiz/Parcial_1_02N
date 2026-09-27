@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<HBox spacing="15.0" xmlns="http://javafx.com" xmlns:fx="http://javafx.com"
+      fx:controller="com.rentcar.parcial_1_02N.controlador.ControladorGestionarVehiculos">
+    <padding>
+        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+    </padding>
+
+    <!-- Sección de la Tabla (Izquierda) -->
+    <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+        <Label text="Listado de Vehículos Registrados" style="-fx-font-weight: bold; -fx-font-size: 14px;"/>
+        <TableView fx:id="tblVehiculos" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="colPlaca" text="Placa" prefWidth="80.0"/>
+                <TableColumn fx:id="colMarca" text="Marca" prefWidth="100.0"/>
+                <TableColumn fx:id="colModelo" text="Modelo" prefWidth="70.0"/>
+                <TableColumn fx:id="colAnio" text="Año" prefWidth="60.0"/>
+                <TableColumn fx:id="colTipo" text="Tipo" prefWidth="90.0"/>
+                <TableColumn fx:id="colTarifa" text="Tarifa Diaria" prefWidth="100.0"/>
+            </columns>
+        </TableView>
+        <Button text="Clonar Seleccionado (Prototype)" onAction="#handleClonarPrototype" maxWidth="Infinity" style="-fx-background-color: #2b579a; -fx-text-fill: white; -fx-font-weight: bold;"/>
+    </VBox>
+
+    <!-- Sección del Formulario (Derecha) -->
+    <VBox spacing="10.0" prefWidth="250.0" style="-fx-border-color: #cccccc; -fx-border-width: 1px; -fx-padding: 10;">
+        <Label text="Datos del Vehículo" style="-fx-font-weight: bold;"/>
+
+        <Label text="Placa:"/>
+        <TextField fx:id="txtPlaca"/>
+
+        <Label text="Marca:"/>
+        <TextField fx:id="txtMarca"/>
+
+        <Label text="Modelo:"/>
+        <TextField fx:id="txtModelo"/>
+
+        <Label text="Año:"/>
+        <TextField fx:id="txtAnio"/>
+
+        <Label text="Tipo:"/>
+        <TextField fx:id="txtTipo"/>
+
+        <Label text="Tarifa Diaria:"/>
+        <TextField fx:id="txtTarifa"/>
+
+        <Separator/>
+
+        <Button text="Registrar Nuevo" onAction="#handleCrear" maxWidth="Infinity"/>
+        <Button text="Actualizar" onAction="#handleActualizar" maxWidth="Infinity"/>
+        <Button text="Eliminar" onAction="#handleEliminar" maxWidth="Infinity" style="-fx-background-color: #d9534f; -fx-text-fill: white;"/>
+    </VBox>
+</HBox>

@@ -23,7 +23,10 @@ public class ModalidadPremiumFactory implements ModalidadAlquilerFactory {
                 builder.getTipoCobertura(),
                 builder.getConductoresAdicionales(),
                 builder.getCaracteristicasEspeciales(),
-                builder.getDuracionContratada()
+                builder.getDuracionContratada(),
+                builder.isIncluyeKilometraje(),
+                builder.isIncluyeSeguroBasico(),
+                builder.isIncluyeAsistenciaEnCarretera()
         );
     }
 }

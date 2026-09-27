@@ -18,7 +18,10 @@ public class ModalidadEconomicaFactory implements ModalidadAlquilerFactory {
                 builder.getDescripcion(),
                 builder.getDuracionMinima(),
                 builder.getValorDiario(),
-                builder.getEstado()
+                builder.getEstado(),
+                builder.isIncluyeKilometraje(),
+                builder.isIncluyeSeguroBasico(),
+                builder.isIncluyeAsistenciaEnCarretera()
         );
     }
 }

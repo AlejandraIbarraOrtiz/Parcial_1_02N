@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="10.0" xmlns="http://javafx.com" xmlns:fx="http://javafx.com"
+      fx:controller="com.rentcar.parcial_1_02N.controlador.ControladorCrearModalidadAlquiler">
+
+
+    <Label text="Configuración de Nueva Modalidad de Alquiler" style="-fx-font-weight: bold; -fx-font-size: 16px;"/>
+
+    <GridPane hgap="10.0" vgap="10.0">
+        <!-- Fila 0 -->
+        <Label text="Tipo Modalidad:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <ComboBox fx:id="cmbTipoModalidad" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+        <Label text="Estado:" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+        <ComboBox fx:id="cmbEstado" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="0"/>
+
+        <!-- Fila 1 -->
+        <Label text="Código:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+        <TextField fx:id="txtCodigo" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+        <Label text="Nombre:" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+        <TextField fx:id="txtNombre" GridPane.columnIndex="3" GridPane.rowIndex="1"/>
+
+        <!-- Fila 2 -->
+        <Label text="Descripción:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+        <TextArea fx:id="txtDescripcion" prefHeight="50.0" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.columnSpan="3"/>
+
+        <!-- Fila 3 -->
+        <Label text="Duración Mínima (Días):" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+        <TextField fx:id="txtDuracionMinima" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+        <Label text="Valor Diario:" GridPane.columnIndex="2" GridPane.rowIndex="3"/>
+        <TextField fx:id="txtValorDiario" GridPane.columnIndex="3" GridPane.rowIndex="3"/>
+    </GridPane>
+
+    <Separator/>
+    <Label text="Inclusiones y Coberturas Básicas" style="-fx-font-weight: bold;"/>
+    <HBox spacing="20.0">
+        <CheckBox fx:id="chkKilometraje" text="Incluye Kilometraje"/>
+        <CheckBox fx:id="chkSeguroBasico" text="Incluye Seguro Básico"/>
+        <CheckBox fx:id="chkAsistencia" text="Asistencia en Carretera"/>
+    </HBox>
+
+    <Separator/>
+    <Label text="Atributos Exclusivos (Premium)" style="-fx-font-weight: bold;"/>
+    <GridPane hgap="10.0" vgap="10.0">
+        <Label text="Tipo Cobertura:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <TextField fx:id="txtTipoCobertura" disable="true" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+        <Label text="Conductores Adicionales:" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+        <TextField fx:id="txtConductoresProd" disable="true" GridPane.columnIndex="3" GridPane.rowIndex="0"/>
+
+        <Label text="Duración Contratada:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+        <TextField fx:id="txtDuracionContratada" disable="true" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+        <Label text="Características Especiales:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+        <TextArea fx:id="txtCaracterísticasEspeciales" disable="true" prefHeight="50.0" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.columnSpan="3"/>
+    </GridPane>
+
+    <!-- CORRECCIÓN AQUÍ: Se cambió a onAction="#handleGuardar" para que coincida exactamente con tu controlador Java -->
+    <Button fx:id="btnGuardar" text="Crear Modalidad con Factory" onAction="#handleGuardarModalidad" maxWidth="Infinity" style="-fx-background-color: #2b579a; -fx-text-fill: white;"/>
+</VBox>

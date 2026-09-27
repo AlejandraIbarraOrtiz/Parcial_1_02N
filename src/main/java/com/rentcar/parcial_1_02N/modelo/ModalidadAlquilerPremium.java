@@ -14,6 +14,9 @@ public class ModalidadAlquilerPremium implements Modalidad {
     private int conductoresAdicionales;
     private String caracteristicasEspeciales;
     private double duracionContratada;
+    private boolean incluyeKilometraje;
+    private boolean incluyeSeguroBasico;
+    private boolean incluyeAsistenciaEnCarretera;
 
     public ModalidadAlquilerPremium(
             String codigo,
@@ -25,7 +28,10 @@ public class ModalidadAlquilerPremium implements Modalidad {
             String tipoCobertura,
             int conductoresAdicionales,
             String caracteristicasEspeciales,
-            double duracionContratada) {
+            double duracionContratada,
+            boolean incluyeKilometraje,
+            boolean incluyeSeguroBasico,
+            boolean incluyeAsistenciaEnCarretera) {
 
         this.codigo = codigo;
         this.nombre = nombre;
@@ -37,14 +43,17 @@ public class ModalidadAlquilerPremium implements Modalidad {
         this.conductoresAdicionales = conductoresAdicionales;
         this.caracteristicasEspeciales = caracteristicasEspeciales;
         this.duracionContratada = duracionContratada;
+        this.incluyeKilometraje = incluyeKilometraje;
+        this.incluyeSeguroBasico = incluyeSeguroBasico;
+        this.incluyeAsistenciaEnCarretera = incluyeAsistenciaEnCarretera;
     }
 
     @Override
     public ModalidadAlquilerBuilder definirModalidad(){
         return  new ModalidadAlquilerBuilder.Builder(codigo, nombre, descripcion, duracionMinima, valorDiario, estado)
-                .incluyeAsistenciaEnCarretera(true)
-                .incluyeSeguroBasico(true)
-                .incuyeKilometarje(true)
+                .incluyeAsistenciaEnCarretera(incluyeAsistenciaEnCarretera)
+                .incluyeSeguroBasico(incluyeSeguroBasico)
+                .incluyeKilometraje(incluyeKilometraje)
                 .tipoCobertura(tipoCobertura)
                 .conductoresAdicionales(conductoresAdicionales)
                 .caracteristicasEspeciales(caracteristicasEspeciales)

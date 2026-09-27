@@ -17,7 +17,7 @@ public class ModalidadAlquilerBuilder {
     private boolean incluyeAsistenciaEnCarretera;
 
 
-    ModalidadAlquilerBuilder(Builder builder){
+    private ModalidadAlquilerBuilder(Builder builder){
         this.codigo = builder.codigo;
         this.nombre = builder.nombre;
         this.descripcion = builder.descripcion;
@@ -30,7 +30,6 @@ public class ModalidadAlquilerBuilder {
         this.duracionContratada = builder.duracionContratada;
         this.incluyeKilometraje = builder.incluyeKilometraje;
         this.incluyeSeguroBasico = builder.incluyeSeguroBasico;
-        this.codigo = builder.codigo;
         this.incluyeAsistenciaEnCarretera = builder.incluyeAsistenciaEnCarretera;
 
     }
@@ -142,7 +141,7 @@ public class ModalidadAlquilerBuilder {
             return this;
         }
 
-        public Builder incuyeKilometarje (boolean incluyeKilometraje){
+        public Builder incluyeKilometraje (boolean incluyeKilometraje){
             this.incluyeKilometraje = incluyeKilometraje;
             return this;
         }
