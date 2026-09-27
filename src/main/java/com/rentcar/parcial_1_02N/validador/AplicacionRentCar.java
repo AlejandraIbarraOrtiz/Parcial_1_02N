@@ -1,4 +1,4 @@
-package com.rentcar.parcial_1_02N;
+package com.rentcar.parcial_1_02N.validador;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+// CORRECCIÓN: Volvemos a ponerle el nombre exacto del archivo físico para quitar lo rojo
 public class AplicacionRentCar extends Application {
 
     @Override

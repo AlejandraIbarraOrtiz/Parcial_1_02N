@@ -23,7 +23,6 @@
             <!-- Opción principal del flujo -->
             <MenuItem text="Procesar Alquileres" onAction="#abrirGestionAlquileres"/>
 
-            <!-- Tu nueva funcionalidad del Factory + Builder metida aquí adentro -->
             <MenuItem text="Configuración de Modalidades" onAction="#abrirGestionModalidades"/>
         </items>
     </MenuButton>
